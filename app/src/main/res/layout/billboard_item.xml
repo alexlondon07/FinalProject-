@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="8dp"
+    android:fillViewport="true">
+
+    <ImageView
+        android:id="@+id/billboard_item_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_launcher_round"/>
+
+    <TextView
+        android:id="@+id/billboard_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:text="Name"
+        android:textAppearance="?attr/textAppearanceListItem"
+        tools:text="Atómica (2017)" />
+
+    <TextView
+        android:id="@+id/billboard_item_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/billboard_item_name"
+        android:layout_below="@+id/billboard_item_name"
+        android:text="Genre"
+        tools:text="Acción | Misterio | Suspenso" />
+
+    <TextView
+        android:id="@+id/billboard_item_IMDb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/billboard_item_genre"
+        android:layout_below="@+id/billboard_item_genre"
+        android:text="IMDb"
+        tools:text="IMDb" />
+
+</RelativeLayout>
