@@ -52,4 +52,9 @@ public class Billboard implements Serializable {
     private String duration;
 
 
+    @SerializedName("IMDb")
+    @Expose
+    private String IMDb;
+
+
 }
