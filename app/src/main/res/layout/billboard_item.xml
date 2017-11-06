@@ -37,13 +37,17 @@
         android:text="Genre"
         tools:text="Acción | Misterio | Suspenso" />
 
-    <TextView
+
+    <RatingBar
         android:id="@+id/billboard_item_IMDb"
+        android:theme="@style/RatingBar"
+        android:rating="3.5"
+        android:stepSize="0.5"
+        android:numStars="5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/billboard_item_genre"
         android:layout_below="@+id/billboard_item_genre"
-        android:text="IMDb"
-        tools:text="IMDb" />
+        android:layout_height="wrap_content"/>
+
 
 </RelativeLayout>
