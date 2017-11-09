@@ -15,7 +15,7 @@ import io.github.alexlondon07.finalproject.R;
  * Created by alexlondon07 on 11/6/17.
  */
 
-class MyadapterExample extends BaseAdapter {
+public class MyadapterExample extends BaseAdapter {
 
     private Context context;
     private int layout;
@@ -63,7 +63,7 @@ class MyadapterExample extends BaseAdapter {
             /* Creamos un objeto de la clase ViewHolder y hacemos que cada atributo referencie
             * a un elemento del layout. Esta referencia se mantiene y cuando reutilicemos la vista
             * convertView ya no tendrá que llamar al método findViewById()*/
-            holder.nameTextView = (TextView) convertView.findViewById(R.id.billboard_item_name);
+            holder.nameTextView =  convertView.findViewById(R.id.billboard_item_name);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
