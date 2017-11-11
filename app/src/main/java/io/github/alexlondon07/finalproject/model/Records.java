@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by alexlondon07 on 11/4/17.
  */
 
-public class Billboard implements Serializable {
+public class Records implements Serializable {
 
     @SerializedName("id_billboard")
     @Expose

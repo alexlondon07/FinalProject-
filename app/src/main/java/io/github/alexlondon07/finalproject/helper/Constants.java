@@ -7,7 +7,7 @@ package io.github.alexlondon07.finalproject.helper;
 public class Constants {
 
     public  final static String TAG_APP = "***** MVP *****";
-    public final static String URL_BASE_TESTING  = "";
+    public final static String URL_BASE_TESTING  = "http://trailers.apple.com/trailers/home/xml/current.xml";
     public final static int TIME_OUT = 6;
     public static final String REQUEST_TIMEOUT_ERROR_MESSAGE = "La solicitud está tardando demasiado. Por favor inténtalo nuevamente.";
     public static final int DEFAULT_ERROR_CODE = 0;

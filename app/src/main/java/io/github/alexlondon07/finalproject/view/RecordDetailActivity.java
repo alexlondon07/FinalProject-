@@ -9,12 +9,12 @@ import android.view.View;
 
 import io.github.alexlondon07.finalproject.R;
 
-public class BillboardDetailActivity extends AppCompatActivity {
+public class RecordDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_billboard_detail);
+        setContentView(R.layout.activity_record_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

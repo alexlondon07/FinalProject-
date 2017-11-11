@@ -9,7 +9,7 @@ import java.util.List;
 
 import io.github.alexlondon07.finalproject.R;
 
-public class BillboardActivity extends AppCompatActivity {
+public class RecordActivity extends AppCompatActivity {
 
     private ListView listView;
     private List<String> billboards;
@@ -17,7 +17,7 @@ public class BillboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_billboard);
+        setContentView(R.layout.activity_record);
 
         listView = findViewById(R.id.billboard_list_view);
 
