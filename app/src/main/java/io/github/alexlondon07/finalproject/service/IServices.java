@@ -1,5 +1,7 @@
 package io.github.alexlondon07.finalproject.service;
 
+import java.util.ArrayList;
+
 import io.github.alexlondon07.finalproject.model.Records;
 import retrofit.http.GET;
 
@@ -10,5 +12,5 @@ import retrofit.http.GET;
 public interface IServices {
 
     @GET("/current.xml")
-    Records getRecords();
+    ArrayList<Records> getRecordsList();
 }

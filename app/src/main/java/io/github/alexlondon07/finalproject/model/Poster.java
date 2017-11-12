@@ -2,14 +2,12 @@ package io.github.alexlondon07.finalproject.model;
 
 import org.simpleframework.xml.Element;
 
-import java.io.Serializable;
-
 /**
  * Created by alexlondon07 on 11/11/17.
  */
 
 @Element(name = "poster")
-public class Poster implements Serializable {
+public class Poster {
 
     @Element(name ="location")
     private String location;

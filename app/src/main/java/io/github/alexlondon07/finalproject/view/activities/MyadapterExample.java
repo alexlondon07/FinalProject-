@@ -55,15 +55,15 @@ public class MyadapterExample extends BaseAdapter {
 
             //Inflamos la vista que nos ha llegado con nuestro layout personalizado
             LayoutInflater layoutInflater = LayoutInflater.from(this.context);
-            convertView = layoutInflater.inflate(R.layout.billboard_item, null);
+            convertView = layoutInflater.inflate(R.layout.record_item, null);
 
             holder = new ViewHolder();
-            layoutInflater.inflate(R.layout.billboard_item, null);
+            layoutInflater.inflate(R.layout.record_item, null);
 
             /* Creamos un objeto de la clase ViewHolder y hacemos que cada atributo referencie
             * a un elemento del layout. Esta referencia se mantiene y cuando reutilicemos la vista
             * convertView ya no tendrá que llamar al método findViewById()*/
-            holder.nameTextView =  convertView.findViewById(R.id.billboard_item_name);
+            holder.nameTextView =  convertView.findViewById(R.id.record_item_name);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();

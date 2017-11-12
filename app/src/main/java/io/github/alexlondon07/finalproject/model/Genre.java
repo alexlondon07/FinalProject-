@@ -3,7 +3,6 @@ package io.github.alexlondon07.finalproject.model;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 
 @Element(name = "genre")
-public class Genre implements Serializable {
+public class Genre {
 
     @ElementList(entry= "name", inline=true)
     private ArrayList<String> name;

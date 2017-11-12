@@ -1,5 +1,7 @@
 package io.github.alexlondon07.finalproject.repository;
 
+import java.util.ArrayList;
+
 import io.github.alexlondon07.finalproject.helper.ServicesFactory;
 import io.github.alexlondon07.finalproject.helper.TypeDecryption;
 import io.github.alexlondon07.finalproject.model.Records;
@@ -9,7 +11,7 @@ import io.github.alexlondon07.finalproject.service.IServices;
  * Created by alexlondon07 on 11/11/17.
  */
 
-public class RecordRepository implements IRecord {
+public class RecordRepository implements IRecordRepository {
 
     private IServices services;
 
@@ -18,9 +20,10 @@ public class RecordRepository implements IRecord {
         services = (IServices) servicesFactory.getInstance(IServices.class);
     }
 
+
     @Override
-    public Records getRecords() {
-        Records  records = services.getRecords();
-        return  records;
+    public ArrayList<Records> getRecords() throws RepositoryError {
+        ArrayList<Records> records = services.getRecordsList();
+        return records;
     }
 }

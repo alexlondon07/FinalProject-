@@ -24,4 +24,7 @@ public class Constants {
 
 
     public static final String URL_XML_BASE = "http://trailers.apple.com/trailers/home/xml/";
+
+
+    public static final String ITEM_RECORD = "RECORDS";
 }

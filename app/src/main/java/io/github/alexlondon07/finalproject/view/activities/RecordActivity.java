@@ -1,59 +1,83 @@
 package io.github.alexlondon07.finalproject.view.activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.github.alexlondon07.finalproject.R;
 import io.github.alexlondon07.finalproject.model.Records;
 import io.github.alexlondon07.finalproject.presenter.RecordPresenter;
-import io.github.alexlondon07.finalproject.repository.RecordRepository;
 import io.github.alexlondon07.finalproject.view.BaseActivity;
+import io.github.alexlondon07.finalproject.view.adapter.RecordAdapter;
 
 public class RecordActivity extends BaseActivity<RecordPresenter> implements IRecordView {
 
     private static final String TAG = "RecordActivity";
-    private ListView listView;
-    private List<String> billboards;
-    private RecordRepository recordRepository;
+    private ListView recordsList;
+    private RecordAdapter recordAdapter;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
 
-        listView = findViewById(R.id.billboard_list_view);
-
-        //Data Example
-        billboards = new ArrayList<>();
-        billboards.add("6 DAYS");
-        billboards.add("PANDEMIA");
-        billboards.add("ATÓMICA");
-        billboards.add("SLEIGHT");
-        billboards.add("DESAPARECIDO");
-        billboards.add("TORRE OSCURA");
+        setPresenter(new RecordPresenter());
+        getPresenter().inject(this, getValidateInternet());
+        createProgresDialog();
+        getPresenter().getRecordPresenter();
+        recordsList = findViewById(R.id.records_list_view);
+    }
 
 
-        Records records = recordRepository.getRecords();
+    private void callAdapter(final ArrayList<Records> recordsArrayList) {
+        recordAdapter = new RecordAdapter(this, R.id.records_list_view, recordsArrayList);
+        recordsList.setAdapter(recordAdapter);
+    }
 
-        Log.i(TAG, records.getDate());
 
-        //My adapter Example
-        MyadapterExample myadapterExample = new MyadapterExample(this, R.layout.billboard_item, billboards);
-        listView.setAdapter(myadapterExample);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getPresenter().getRecordPresenter();
+    }
+
+
+    @Override
+    public void showRecords(final ArrayList<Records> recordsArrayList) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                callAdapter(recordsArrayList);
+            }
+        });
     }
 
     @Override
-    public void showRecords(ArrayList<Records> recordsArrayList) {
-
+    public void showAlertDialogInternet( int title,  int message) {
+        showAlertDialog(title, message);
     }
 
-    @Override
-    public void showAlertDialogInternet(int error, int validate_internet) {
-
+    private void showAlertDialog(final int title, final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getShowAlertDialog().showAlertDialog(title, message, false, R.string.accept, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getPresenter().getRecordPresenter();
+                    }
+                }, R.string.option_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+            }
+        });
     }
 
     @Override

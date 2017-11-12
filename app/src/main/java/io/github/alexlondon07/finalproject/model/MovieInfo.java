@@ -3,7 +3,6 @@ package io.github.alexlondon07.finalproject.model;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  */
 
 @ElementList(name = "movieInfo")
-public class MovieInfo implements Serializable {
+public class MovieInfo {
 
     @Element(name = "id")
     private String id;

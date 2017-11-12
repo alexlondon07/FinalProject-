@@ -1,25 +1,32 @@
 package io.github.alexlondon07.finalproject.model;
 
 
-import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by alexlondon07 on 11/4/17.
  */
 
 @Root(name = "records")
-public class Records implements Serializable {
+public class Records {
 
-    @Attribute(name="date")
+    @Element(name="date")
     private String date;
 
     @ElementList(entry = "movieinfo", inline = true)
-    private ArrayList<MovieInfo> movieInfo;
+    private List<MovieInfo> movieInfo;
+
+    public List<MovieInfo> getMovieInfo() {
+        return movieInfo;
+    }
+
+    public void setMovieInfo(List<MovieInfo> movieInfo) {
+        this.movieInfo = movieInfo;
+    }
 
     public String getDate() {
         return date;
@@ -29,11 +36,4 @@ public class Records implements Serializable {
         this.date = date;
     }
 
-    public ArrayList<MovieInfo> getMovieInfo() {
-        return movieInfo;
-    }
-
-    public void setMovieInfo(ArrayList<MovieInfo> movieInfo) {
-        this.movieInfo = movieInfo;
-    }
 }
