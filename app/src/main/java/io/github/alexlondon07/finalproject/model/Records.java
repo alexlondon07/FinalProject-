@@ -1,131 +1,39 @@
 package io.github.alexlondon07.finalproject.model;
 
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by alexlondon07 on 11/4/17.
  */
 
+@Root(name = "records")
 public class Records implements Serializable {
 
-    @SerializedName("id_billboard")
-    @Expose
-    private int idBollboard;
+    @Attribute(name="date")
+    private String date;
 
+    @ElementList(entry = "movieinfo", inline = true)
+    private ArrayList<MovieInfo> movieInfo;
 
-    @SerializedName("avatar")
-    @Expose
-    private String avatar;
-
-
-    @SerializedName("name")
-    @Expose
-    private String name;
-
-
-    @SerializedName("genre")
-    @Expose
-    private String genre;
-
-
-    @SerializedName("sinopsis")
-    @Expose
-    private String sinopsis;
-
-
-    @SerializedName("cast")
-    @Expose
-    private String cast;
-
-
-    @SerializedName("movie_director")
-    @Expose
-    private String movie_director;
-
-
-    @SerializedName("duration")
-    @Expose
-    private String duration;
-
-
-    @SerializedName("IMDb")
-    @Expose
-    private String IMDb;
-
-
-    public int getIdBollboard() {
-        return idBollboard;
+    public String getDate() {
+        return date;
     }
 
-    public void setIdBollboard(int idBollboard) {
-        this.idBollboard = idBollboard;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public ArrayList<MovieInfo> getMovieInfo() {
+        return movieInfo;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getSinopsis() {
-        return sinopsis;
-    }
-
-    public void setSinopsis(String sinopsis) {
-        this.sinopsis = sinopsis;
-    }
-
-    public String getCast() {
-        return cast;
-    }
-
-    public void setCast(String cast) {
-        this.cast = cast;
-    }
-
-    public String getMovie_director() {
-        return movie_director;
-    }
-
-    public void setMovie_director(String movie_director) {
-        this.movie_director = movie_director;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public String getIMDb() {
-        return IMDb;
-    }
-
-    public void setIMDb(String IMDb) {
-        this.IMDb = IMDb;
+    public void setMovieInfo(ArrayList<MovieInfo> movieInfo) {
+        this.movieInfo = movieInfo;
     }
 }
