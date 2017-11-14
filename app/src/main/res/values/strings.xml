@@ -11,11 +11,15 @@
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
         "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
         "technologically advanced and open to imagination and magic.\n"
-
     </string>
     <string name="error">Error</string>
     <string name="validate_internet">No tiene conexión a internet</string>
     <string name="loading_message">Cargando...</string>
     <string name="accept">Aceptar</string>
     <string name="option_cancel">Cancelar</string>
+
+
+    <string name="recent_news">Da Nang International Fireworks Festival 2017</string>
+    <string name="in_news">Da Nang International Fireworks Festival 2017Update: Dec 08, 2016 (TITC) - Da Nang International Fireworks Festival 2017 (DIFF 2017) with the theme “Shining Marble Mountains” will take place for two months, from 29 April to 24 June 2017 with the aim to Da Nang become a unique cultural festival tourism space. </string>
+    <string name="publish_date">2017-04-30 12:13:14</string>
 </resources>
