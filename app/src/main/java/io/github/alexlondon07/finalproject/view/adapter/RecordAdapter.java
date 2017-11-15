@@ -1,7 +1,6 @@
 package io.github.alexlondon07.finalproject.view.adapter;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,52 +10,42 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import io.github.alexlondon07.finalproject.R;
-import io.github.alexlondon07.finalproject.model.Records;
+import io.github.alexlondon07.finalproject.model.MovieInfo;
 
 /**
  * Created by alexlondon07 on 11/11/17.
  */
 
-public class RecordAdapter extends ArrayAdapter<Records>  {
+public class RecordAdapter extends ArrayAdapter<MovieInfo> {
 
-    private ArrayList<Records> recordsArrayList;
     private Activity context;
-    private Records records;
     private ImageView imageViewAvatar;
     private TextView textView_name, textView_genre, textView_date;
+    private List<MovieInfo> movieInfoList;
 
 
-
-    public RecordAdapter(Activity context,  int resource, ArrayList<Records> recordsArrayList){
-        super(context, resource, recordsArrayList);
+    public RecordAdapter(Activity context,  int resource, List<MovieInfo> movieInfoList){
+        super(context, resource, movieInfoList);
         this.context = context;
-        this.recordsArrayList = recordsArrayList;
+        this.movieInfoList = movieInfoList;
     }
-
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.record_item, parent, false);
-        this.records = this.recordsArrayList.get(position);
-
         loadView(convertView);
 
-        //avatar
-        imageViewAvatar.setImageURI(Uri.parse(records.getMovieInfo().get(0).getPoster().get(0).getLocation()));
+        Picasso.with(context).load(movieInfoList.get(position).getPoster().get(0).getXlarge()).into(imageViewAvatar);
 
-        //date
-        textView_date.setText(records.getDate());
-
-        //Title movie
-        textView_name.setText(records.getMovieInfo().get(0).getInfo().getTitle());
-
-        //textView_genre.setText(records.getMovieInfo().get(0).getGenre().get(0).getName());
-
+        textView_date.setText(movieInfoList.get(position).getInfo().getPostdate());
+        textView_name.setText(movieInfoList.get(position).getInfo().getTitle());
+        textView_genre.setText(movieInfoList.get(position).getGenre().get(0).getName().toString());
         return convertView;
     }
-
 
     private void loadView(View convertView) {
         textView_name = convertView.findViewById(R.id.record_item_name);

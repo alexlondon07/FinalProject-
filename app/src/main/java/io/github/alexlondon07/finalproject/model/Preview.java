@@ -12,12 +12,6 @@ public class Preview  {
     @Element(name ="large")
     private Large large;
 
-    @Override
-    public String toString()
-    {
-        return "ClassPojo [large = "+large+"]";
-    }
-
     public Large getLarge() {
         return large;
     }

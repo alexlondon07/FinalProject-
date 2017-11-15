@@ -110,9 +110,4 @@ public class Info {
         this.description = description;
     }
 
-    @Override
-    public String toString()
-    {
-        return "ClassPojo [studio = "+studio+", postdate = "+postdate+", title = "+title+", description = "+description+", runtime = "+runtime+", releasedate = "+releasedate+", rating = "+rating+", copyright = "+copyright+", director = "+director+"]";
-    }
 }

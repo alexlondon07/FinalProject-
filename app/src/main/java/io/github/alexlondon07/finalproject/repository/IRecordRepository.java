@@ -1,7 +1,5 @@
 package io.github.alexlondon07.finalproject.repository;
 
-import java.util.ArrayList;
-
 import io.github.alexlondon07.finalproject.model.Records;
 
 /**
@@ -10,5 +8,5 @@ import io.github.alexlondon07.finalproject.model.Records;
 
 public interface IRecordRepository {
 
-    ArrayList<Records> getRecords() throws RepositoryError;
+    Records getRecords() throws RepositoryError;
 }

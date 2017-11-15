@@ -1,11 +1,11 @@
 package io.github.alexlondon07.finalproject.model;
 
 
-import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by alexlondon07 on 11/4/17.
@@ -14,19 +14,12 @@ import java.util.List;
 @Root(name = "records")
 public class Records {
 
-    @Element(name="date")
+    @Attribute(name="date", required = false)
     private String date;
 
     @ElementList(entry = "movieinfo", inline = true)
-    private List<MovieInfo> movieInfo;
+    private ArrayList<MovieInfo> movieInfo;
 
-    public List<MovieInfo> getMovieInfo() {
-        return movieInfo;
-    }
-
-    public void setMovieInfo(List<MovieInfo> movieInfo) {
-        this.movieInfo = movieInfo;
-    }
 
     public String getDate() {
         return date;
@@ -36,4 +29,11 @@ public class Records {
         this.date = date;
     }
 
+    public ArrayList<MovieInfo> getMovieInfo() {
+        return movieInfo;
+    }
+
+    public void setMovieInfo(ArrayList<MovieInfo> movieInfo) {
+        this.movieInfo = movieInfo;
+    }
 }

@@ -1,7 +1,5 @@
 package io.github.alexlondon07.finalproject.repository;
 
-import java.util.ArrayList;
-
 import io.github.alexlondon07.finalproject.helper.ServicesFactory;
 import io.github.alexlondon07.finalproject.helper.TypeDecryption;
 import io.github.alexlondon07.finalproject.model.Records;
@@ -22,8 +20,7 @@ public class RecordRepository implements IRecordRepository {
 
 
     @Override
-    public ArrayList<Records> getRecords() throws RepositoryError {
-        ArrayList<Records> records = services.getRecordsList();
-        return records;
+    public Records getRecords() throws RepositoryError {
+        return services.getRecordsList();
     }
 }

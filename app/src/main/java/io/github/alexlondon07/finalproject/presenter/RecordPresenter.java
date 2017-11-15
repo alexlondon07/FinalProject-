@@ -1,10 +1,9 @@
 package io.github.alexlondon07.finalproject.presenter;
 
-import java.util.ArrayList;
+import android.util.Log;
 
 import io.github.alexlondon07.finalproject.R;
 import io.github.alexlondon07.finalproject.model.Records;
-import io.github.alexlondon07.finalproject.repository.IRecordRepository;
 import io.github.alexlondon07.finalproject.repository.RecordRepository;
 import io.github.alexlondon07.finalproject.repository.RepositoryError;
 import io.github.alexlondon07.finalproject.view.activities.IRecordView;
@@ -15,7 +14,7 @@ import io.github.alexlondon07.finalproject.view.activities.IRecordView;
 
 public class RecordPresenter extends BasePresenter<IRecordView> {
 
-    private IRecordRepository recordRepository;
+    private RecordRepository recordRepository;
     private  final  static  String TAG = "RecordPresenter";
 
     public RecordPresenter() {
@@ -44,9 +43,10 @@ public class RecordPresenter extends BasePresenter<IRecordView> {
     private void getRecordRepository() {
         try {
 
-            ArrayList<Records> recordsArrayList = recordRepository.getRecords();
-            getView().showRecords(recordsArrayList);
+            Records records = recordRepository.getRecords();
+            Log.e(TAG, records.getDate());
 
+            getView().showMovies(records.getMovieInfo());
         } catch (RepositoryError repositoryError) {
             repositoryError.printStackTrace();
         } finally {

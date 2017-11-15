@@ -13,8 +13,10 @@
 
     <ImageView
         android:id="@+id/record_item_avatar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+
+
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_centerVertical="true"
         android:contentDescription="@string/app_name"
         android:src="@mipmap/ic_launcher_round"/>
@@ -23,7 +25,7 @@
         android:id="@+id/record_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="56dp"
+        android:layout_marginLeft="90dp"
         android:text="Name"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Atómica (2017)" />
@@ -56,9 +58,9 @@
         android:id="@+id/record_item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="56dp"
         android:layout_below="@+id/record_item_IMDb"
         android:text="Date"
+        android:layout_marginLeft="90dp"
         tools:text="Mon, 06 Nov 2017 01:00:01 -0800" />
 
 

@@ -15,12 +15,6 @@ public class Poster {
     @Element(name ="xlarge")
     private String xlarge;
 
-    @Override
-    public String toString()
-    {
-        return "ClassPojo [location = "+location+", xlarge = "+xlarge+"]";
-    }
-
     public String getLocation() {
         return location;
     }

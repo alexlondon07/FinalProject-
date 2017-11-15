@@ -7,7 +7,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import io.github.alexlondon07.finalproject.R;
-import io.github.alexlondon07.finalproject.model.Records;
+import io.github.alexlondon07.finalproject.model.MovieInfo;
 import io.github.alexlondon07.finalproject.presenter.RecordPresenter;
 import io.github.alexlondon07.finalproject.view.BaseActivity;
 import io.github.alexlondon07.finalproject.view.adapter.RecordAdapter;
@@ -33,8 +33,8 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
     }
 
 
-    private void callAdapter(final ArrayList<Records> recordsArrayList) {
-        recordAdapter = new RecordAdapter(this, R.id.records_list_view, recordsArrayList);
+    private void callAdapter(ArrayList<MovieInfo> movieInfoList) {
+        recordAdapter = new RecordAdapter(this, R.id.records_list_view, movieInfoList);
         recordsList.setAdapter(recordAdapter);
     }
 
@@ -47,11 +47,11 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
 
 
     @Override
-    public void showRecords(final ArrayList<Records> recordsArrayList) {
+    public void showMovies(final ArrayList<MovieInfo> movieInfoArrayList) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                callAdapter(recordsArrayList);
+                callAdapter(movieInfoArrayList);
             }
         });
     }

@@ -2,7 +2,7 @@ package io.github.alexlondon07.finalproject.view.activities;
 
 import java.util.ArrayList;
 
-import io.github.alexlondon07.finalproject.model.Records;
+import io.github.alexlondon07.finalproject.model.MovieInfo;
 import io.github.alexlondon07.finalproject.view.IBaseView;
 
 /**
@@ -11,7 +11,7 @@ import io.github.alexlondon07.finalproject.view.IBaseView;
 
 public interface IRecordView extends IBaseView {
 
-    void showRecords(ArrayList<Records> recordsArrayList);
+    void showMovies(ArrayList<MovieInfo> movieInfoArrayList);
 
     void showAlertDialogInternet(int error, int validate_internet);
 

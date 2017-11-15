@@ -17,11 +17,6 @@ public class Large {
     @Attribute(name = "filesize")
     private String filesize;
 
-    @Override
-    public String toString()
-    {
-        return "ClassPojo [content = "+content+", filesize = "+filesize+"]";
-    }
 
     public String getContent() {
         return content;

@@ -17,13 +17,6 @@ public class Genre {
     private ArrayList<String> name;
 
 
-    @Override
-    public String toString()
-    {
-        return "ClassPojo [name = "+name+"]";
-    }
-
-
     public ArrayList<String> getName() {
         return name;
     }
