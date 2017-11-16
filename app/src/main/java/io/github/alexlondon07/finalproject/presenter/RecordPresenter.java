@@ -1,7 +1,5 @@
 package io.github.alexlondon07.finalproject.presenter;
 
-import android.util.Log;
-
 import io.github.alexlondon07.finalproject.R;
 import io.github.alexlondon07.finalproject.model.Records;
 import io.github.alexlondon07.finalproject.repository.RecordRepository;
@@ -42,10 +40,7 @@ public class RecordPresenter extends BasePresenter<IRecordView> {
 
     private void getRecordRepository() {
         try {
-
             Records records = recordRepository.getRecords();
-            Log.e(TAG, records.getDate());
-
             getView().showMovies(records.getMovieInfo());
         } catch (RepositoryError repositoryError) {
             repositoryError.printStackTrace();

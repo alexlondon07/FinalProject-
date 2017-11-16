@@ -5,6 +5,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 
 @Root(name = "records")
-public class Records {
+public class Records  implements Serializable{
 
     @Attribute(name="date", required = false)
     private String date;

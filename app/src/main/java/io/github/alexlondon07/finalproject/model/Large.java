@@ -4,12 +4,14 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Text;
 
+import java.io.Serializable;
+
 /**
  * Created by alexlondon07 on 11/11/17.
  */
 
 @Element(name = "large")
-public class Large {
+public class Large implements Serializable {
 
     @Text
     private String content;

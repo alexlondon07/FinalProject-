@@ -4,6 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 
 @Element(name = "movieInfo")
-public class MovieInfo {
+public class MovieInfo implements Serializable {
 
     @Attribute(name = "id")
     private String id;

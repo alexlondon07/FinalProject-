@@ -1,12 +1,17 @@
 package io.github.alexlondon07.finalproject.view.activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import io.github.alexlondon07.finalproject.R;
+import io.github.alexlondon07.finalproject.helper.Constants;
 import io.github.alexlondon07.finalproject.model.MovieInfo;
 import io.github.alexlondon07.finalproject.presenter.RecordPresenter;
 import io.github.alexlondon07.finalproject.view.BaseActivity;
@@ -33,9 +38,20 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
     }
 
 
-    private void callAdapter(ArrayList<MovieInfo> movieInfoList) {
+    private void callAdapter(final ArrayList<MovieInfo> movieInfoList) {
         recordAdapter = new RecordAdapter(this, R.id.records_list_view, movieInfoList);
         recordsList.setAdapter(recordAdapter);
+
+        recordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(RecordActivity.this, RecordDetailActivity.class);
+                MovieInfo movieInfo = movieInfoList.get(position);
+                Log.i(TAG, movieInfo.getId());
+                intent.putExtra(Constants.ITEM_RECORD, movieInfo);
+                startActivity(intent);
+            }
+        });
     }
 
 
