@@ -13,8 +13,6 @@
 
     <ImageView
         android:id="@+id/record_item_avatar"
-
-
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_centerVertical="true"

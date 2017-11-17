@@ -5,6 +5,8 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import io.github.alexlondon07.finalproject.R;
 import io.github.alexlondon07.finalproject.helper.Constants;
 import io.github.alexlondon07.finalproject.model.MovieInfo;
@@ -14,6 +16,7 @@ import io.github.alexlondon07.finalproject.view.BaseActivity;
 
 public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> implements IRecordDetail  {
 
+    private static final String TAG = "RecordDetailActivity";
     private TextView name, date, sipnosis;
     private ImageView avatar;
     private MovieInfo movieInfo;
@@ -36,15 +39,17 @@ public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> im
     }
 
     private void setDataItem() {
+        Picasso.with(this).load(movieInfo.getPoster().get(0).getXlarge()).into(avatar);
         name.setText(movieInfo.getInfo().getTitle());
         date.setText(movieInfo.getInfo().getPostdate());
         sipnosis.setText(movieInfo.getInfo().getDescription());
     }
 
     private void loadView() {
-        name = findViewById(R.id.textView_name);
-        date = findViewById(R.id.textView_date);
-        sipnosis = findViewById(R.id.textView_sipnosis);
+        avatar = findViewById(R.id.activity_record_detail_imageViewAvatar);
+        name = findViewById(R.id.activity_record_detail_textView_name);
+        date = findViewById(R.id.activity_record_detail_textView_date);
+        sipnosis = findViewById(R.id.activity_record_detail_textView_sipnosis);
     }
 
     @Override
