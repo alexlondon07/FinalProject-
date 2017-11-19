@@ -17,7 +17,7 @@ import io.github.alexlondon07.finalproject.view.BaseActivity;
 public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> implements IRecordDetail  {
 
     private static final String TAG = "RecordDetailActivity";
-    private TextView name, date, sipnosis;
+    private TextView name, date, sipnosis, genre;
     private ImageView avatar;
     private MovieInfo movieInfo;
 
@@ -43,6 +43,7 @@ public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> im
         name.setText(movieInfo.getInfo().getTitle());
         date.setText(movieInfo.getInfo().getPostdate());
         sipnosis.setText(movieInfo.getInfo().getDescription());
+        genre.setText(movieInfo.getGenre().get(0).getName().toString());
     }
 
     private void loadView() {
@@ -50,6 +51,7 @@ public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> im
         name = findViewById(R.id.activity_record_detail_textView_name);
         date = findViewById(R.id.activity_record_detail_textView_date);
         sipnosis = findViewById(R.id.activity_record_detail_textView_sipnosis);
+        genre = findViewById(R.id.activity_record_detail_textView_genre);
     }
 
     @Override
