@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activities.RecordActivity">
-
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,7 +37,6 @@
             android:name=".view.activities.RecordDetailActivity"
             android:label="@string/title_activity_billboard_detail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.activities.CoverFlowActivity" />
         <activity android:name=".view.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

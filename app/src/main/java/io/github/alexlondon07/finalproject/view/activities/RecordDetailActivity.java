@@ -25,7 +25,7 @@ public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> im
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         setPresenter(new DetailRecordPresenter(new RecordRepository()));
@@ -41,7 +41,7 @@ public class RecordDetailActivity extends BaseActivity<DetailRecordPresenter> im
     private void setDataItem() {
         Picasso.with(this).load(movieInfo.getPoster().get(0).getXlarge()).into(avatar);
         name.setText(movieInfo.getInfo().getTitle());
-        date.setText(movieInfo.getInfo().getPostdate());
+        date.setText(movieInfo.getInfo().getReleasedate());
         sipnosis.setText(movieInfo.getInfo().getDescription());
         genre.setText(movieInfo.getGenre().get(0).getName().toString());
     }

@@ -23,8 +23,6 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
     private ListView recordsList;
     private RecordAdapter recordAdapter;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +32,7 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
         getPresenter().inject(this, getValidateInternet());
         createProgresDialog();
         getPresenter().getRecordPresenter();
+        //ListView
         recordsList = findViewById(R.id.records_list_view);
     }
 

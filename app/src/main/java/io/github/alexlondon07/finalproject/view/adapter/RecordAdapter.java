@@ -39,7 +39,7 @@ public class RecordAdapter extends ArrayAdapter<MovieInfo> {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.record_item, parent, false);
         loadView(convertView);
 
-        Picasso.with(context).load(movieInfoList.get(position).getPoster().get(0).getXlarge()).into(imageViewAvatar);
+        Picasso.with(context).load(movieInfoList.get(position).getPoster().get(0).getLocation()).into(imageViewAvatar);
 
         textView_date.setText(movieInfoList.get(position).getInfo().getPostdate());
         textView_name.setText(movieInfoList.get(position).getInfo().getTitle());
