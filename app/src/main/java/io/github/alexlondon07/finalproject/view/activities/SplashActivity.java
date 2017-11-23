@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
     private void time() {
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(SplashActivity.this, RecordActivity.class);
+                Intent intent = new Intent(SplashActivity.this, TourActivity.class);
                 startActivity(intent);
                 finish();
             };
@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void init() {
         animationView = findViewById(R.id.animation_view);
-        animationView.setAnimation("lego_loader.json");
+        animationView.setAnimation("preloader.json");
         animationView.loop(true);
         animationView.playAnimation();
     }

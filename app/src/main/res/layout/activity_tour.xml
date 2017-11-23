@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.github.alexlondon07.finalproject.view.activities.TourActivity">
+
+
+    <ImageView
+        android:id="@+id/record_item_avatar"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignBottom="@+id/record_item_date"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/poster" />
+
+    <TextView
+        android:id="@+id/record_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:text="@string/name_record"
+        android:textAppearance="?attr/textAppearanceListItem"
+        tools:text="@string/name_record" />
+
+
+
+    <TextView
+        android:id="@+id/record_item_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/record_item_name"
+        android:layout_below="@+id/record_item_name"
+        android:text="@string/genre"
+        tools:text="@string/genre" />
+
+
+    <RatingBar
+        android:id="@+id/record_item_IMDb"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/record_item_genre"
+        android:layout_below="@+id/record_item_genre"
+        android:numStars="5"
+        android:rating="3.5"
+        android:stepSize="0.5"
+        android:theme="@style/RatingBar" />
+
+    <TextView
+        android:id="@+id/record_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/record_item_IMDb"
+        android:text="@string/date"
+        android:layout_marginLeft="90dp"
+        tools:text="@string/date" />
+
+
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/record_item_date"
+        android:layout_alignTop="@+id/record_item_genre"
+        app:srcCompat="@drawable/icons8_guia_app" />
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/record_item_date"
+        android:layout_marginTop="44dp"
+        android:layout_toEndOf="@+id/record_item_name"
+        android:text="@string/btn_guia2"
+        app:srcCompat="@drawable/icons8_guia_app" />
+
+
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/record_item_date"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="21dp"
+        android:text="@string/btn_guia2"
+        app:srcCompat="@drawable/icons8_guia_app" />
+
+</RelativeLayout>
