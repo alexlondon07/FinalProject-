@@ -72,8 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/record_item_date"
-        android:layout_marginTop="44dp"
-        android:layout_toEndOf="@+id/record_item_name"
+        android:layout_marginTop="75dp"
+        android:layout_toStartOf="@+id/button3"
         android:text="@string/btn_guia2"
         app:srcCompat="@drawable/icons8_guia_app" />
 
@@ -82,9 +82,9 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/record_item_date"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="21dp"
+        android:layout_alignEnd="@+id/record_item_IMDb"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="111dp"
         android:text="@string/btn_guia2"
         app:srcCompat="@drawable/icons8_guia_app" />
 
