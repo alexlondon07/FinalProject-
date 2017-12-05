@@ -28,4 +28,7 @@
     <string name="btn_guia2">Paso # 2</string>
     <string name="final_tour">Fin Tour</string>
     <string name="location_error">Error al obtener ubicaciones</string>
+    <string name="tweets">Tweets</string>
+    <string name="siguiendo">Siguiendo</string>
+    <string name="seguidores">Seguidores</string>
 </resources>

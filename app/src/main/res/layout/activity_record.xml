@@ -15,6 +15,21 @@
         android:layout_height="wrap_content">
     </ListView>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:onClick="goToProfile"
+        android:layout_margin="@dimen/floatingActionButtonProfile"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_person_pin_black_24dp"
+        />
+
+
 </RelativeLayout>
 
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -110,12 +111,21 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
     }
 
     @Override
-    public void showAlertError(int error, int title) {
-
+    public void showAlertError(int title, int message) {
+        showAlertDialog(title, message);
     }
 
     @Override
     public void showAlertError(int error, String title) {
+        Toast.makeText(this, title, Toast.LENGTH_LONG).show();
+    }
 
+    /**
+     * Función para redirecionar a la actividad de perfil del usuario
+     * @param view
+     */
+    public void goToProfile(View view) {
+        Intent intent = new Intent(RecordActivity.this, ProfileActivity.class);
+        startActivity(intent);
     }
 }
