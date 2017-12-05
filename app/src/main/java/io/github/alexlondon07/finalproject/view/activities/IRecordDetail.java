@@ -1,5 +1,8 @@
 package io.github.alexlondon07.finalproject.view.activities;
 
+import java.util.ArrayList;
+
+import io.github.alexlondon07.finalproject.model.cinemas.Cinema;
 import io.github.alexlondon07.finalproject.view.IBaseView;
 
 /**
@@ -8,7 +11,7 @@ import io.github.alexlondon07.finalproject.view.IBaseView;
 
 public interface IRecordDetail  extends IBaseView {
 
-    void showAlertDialog(int error);
+    void showCinemas(ArrayList<Cinema> cinemaArrayList);
 
-    void showToast(String msg);
+    void showAlertDialog(int error, int validate_internet);
 }

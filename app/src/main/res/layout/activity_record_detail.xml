@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
                     android:id="@+id/activity_record_detail_textView_name"
                     android:padding="12dp"
                     android:textSize="20sp"
@@ -90,13 +90,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
 
-                    <TextView
+                    <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
                         android:id="@+id/activity_record_detail_textView_date"
                         android:layout_gravity="center_vertical"
-                        android:padding="12dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimary"
                         android:text="@string/publish_date"
                         android:layout_width="0dp"
                         android:layout_weight="9"
@@ -109,13 +105,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
 
-                    <TextView
+                    <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
                         android:id="@+id/activity_record_detail_textView_genre"
                         android:layout_gravity="center_vertical"
-                        android:padding="12dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimary"
                         android:text="@string/genre"
                         android:layout_width="0dp"
                         android:layout_weight="9"
@@ -134,7 +126,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
-
 
             </LinearLayout>
 

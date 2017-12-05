@@ -3,15 +3,19 @@ package io.github.alexlondon07.finalproject.view.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 
+import io.github.alexlondon07.finalproject.App;
 import io.github.alexlondon07.finalproject.R;
 import io.github.alexlondon07.finalproject.helper.Constants;
+import io.github.alexlondon07.finalproject.helper.TypeDecryption;
 import io.github.alexlondon07.finalproject.model.MovieInfo;
 import io.github.alexlondon07.finalproject.presenter.RecordPresenter;
 import io.github.alexlondon07.finalproject.view.BaseActivity;
@@ -22,18 +26,22 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
     private static final String TAG = "RecordActivity";
     private ListView recordsList;
     private RecordAdapter recordAdapter;
+    private Tracker tracker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
 
-        setPresenter(new RecordPresenter());
+        setPresenter(new RecordPresenter(TypeDecryption.XML));
         getPresenter().inject(this, getValidateInternet());
         createProgresDialog();
         getPresenter().getRecordPresenter();
         //ListView
         recordsList = findViewById(R.id.records_list_view);
+
+        App myApp = (App) getApplication();
+        tracker = myApp.getDefaultTracker();
     }
 
 
@@ -44,9 +52,15 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
         recordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                //Google Analytics
+                tracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Details Movie")
+                        .setAction(movieInfoList.get(position).getInfo().getTitle())
+                        .build());
+
                 Intent intent = new Intent(RecordActivity.this, RecordDetailActivity.class);
                 MovieInfo movieInfo = movieInfoList.get(position);
-                Log.i(TAG, movieInfo.getId());
                 intent.putExtra(Constants.ITEM_RECORD, movieInfo);
                 startActivity(intent);
             }
@@ -96,12 +110,12 @@ public class RecordActivity extends BaseActivity<RecordPresenter> implements IRe
     }
 
     @Override
-    public void showAlertError(int error, int error2) {
+    public void showAlertError(int error, int title) {
 
     }
 
     @Override
-    public void showAlertError(int error, String error2) {
+    public void showAlertError(int error, String title) {
 
     }
 }

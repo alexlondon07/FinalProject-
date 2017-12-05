@@ -1,6 +1,7 @@
 package io.github.alexlondon07.finalproject.presenter;
 
 import io.github.alexlondon07.finalproject.R;
+import io.github.alexlondon07.finalproject.helper.TypeDecryption;
 import io.github.alexlondon07.finalproject.model.Records;
 import io.github.alexlondon07.finalproject.repository.RecordRepository;
 import io.github.alexlondon07.finalproject.repository.RepositoryError;
@@ -15,8 +16,8 @@ public class RecordPresenter extends BasePresenter<IRecordView> {
     private RecordRepository recordRepository;
     private  final  static  String TAG = "RecordPresenter";
 
-    public RecordPresenter() {
-        recordRepository = new RecordRepository();
+    public RecordPresenter(TypeDecryption typeDecryption) {
+        recordRepository = new RecordRepository(typeDecryption);
     }
 
     public void getRecordPresenter() {

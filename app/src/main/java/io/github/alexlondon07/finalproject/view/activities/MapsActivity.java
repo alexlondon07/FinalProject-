@@ -1,12 +1,12 @@
 package io.github.alexlondon07.finalproject.view.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,6 +18,7 @@ import com.directions.route.Routing;
 import com.directions.route.RoutingListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,31 +27,42 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import io.github.alexlondon07.finalproject.R;
+import io.github.alexlondon07.finalproject.model.cinemas.Cinema;
+import io.github.alexlondon07.finalproject.model.cinemas.Location;
+import io.github.alexlondon07.finalproject.model.cinemas.LocationsList;
+import io.github.alexlondon07.finalproject.presenter.DetailRecordPresenter;
+import io.github.alexlondon07.finalproject.view.BaseFragment;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends BaseFragment<DetailRecordPresenter> implements IRecordDetail,OnMapReadyCallback {
 
     private GoogleMap mMap;
     private String TAG = "MapsActivity.class";
+    private ArrayList<Cinema> cinemaArrayList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        setPresenter(new DetailRecordPresenter());
+        getPresenter().inject(this,getValidateInternet());
+        createProgresDialog();
+        getPresenter().getCinemaPresenter();
 
         if(checkPlayServices()) {
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
-        }else{
-            //TODO
         }
     }
 
@@ -80,11 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        createMarkers();
-        changeStateControls();
     }
-
 
     private void changeStateControls() {
         UiSettings uisettings = mMap.getUiSettings();
@@ -93,22 +101,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         uisettings.setMyLocationButtonEnabled(true);//Ubicación
     }
 
-    private void createMarkers() {
-        LatLng myHome = new LatLng(6.2499157, -75.59853420000002);
-        mMap.addMarker(new MarkerOptions().position(myHome).title("Marker en Casa").icon(bitmapDescriptorFromVector(this, R.drawable.ic_location_on_black_24dp)));
+    /**
+     * Función para marcar los puntos de los cinemas de la pelicula seleccionada
+     * @param cinemaArrayList
+     */
+    private void createMarkers(ArrayList<Cinema> cinemaArrayList) {
 
-        LatLng myOffice = new LatLng(6.2501477, -75.5694747);
-        mMap.addMarker(new MarkerOptions().position(myOffice).title("Marker en Gana").icon(bitmapDescriptorFromVector(this, R.drawable.ic_location_on_black_24dp)));
+        if(cinemaArrayList !=null){
+            ArrayList<LatLng> points = new ArrayList<>();
+            List<LocationsList> locationsLists = cinemaArrayList.get(0).getLocationList();
 
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myHome, 17));
+            for (LocationsList location :locationsLists){
 
-        Polyline polyline = mMap.addPolyline(new PolylineOptions()
-                .add(myHome, myOffice)
-                .width(10)
-                .color(Color.BLUE)
-        );
+                Location newLocation = location.getLocation();
 
-        calculateRoute(myHome, myOffice);
+                LatLng point = new LatLng(newLocation.getCoordinates()[1], newLocation.getCoordinates()[0]);
+
+                //Se agrega cada punto obtenido del servicio
+                MarkerOptions markerOptions =
+                        new MarkerOptions()
+                                .position(point)
+                                .title(location.getName())
+                                .icon(bitmapDescriptorFromVector(this, R.drawable.ic_location_on_black_24dp));
+
+                mMap.addMarker(markerOptions);
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+
+                points.add(point);
+            }
+            centerRoutes(points);
+
+        }else{
+            Toast.makeText(this, R.string.location_error, Toast.LENGTH_SHORT).show();
+        }
     }
 
     RoutingListener routingListener = new RoutingListener() {
@@ -125,20 +150,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public void onRoutingSuccess(ArrayList<Route> routes, int shortestRouteIndex) {
 
+            String [] colorsAll = getResources().getStringArray(R.array.array_colors);
             ArrayList polyLines = new ArrayList<>();
+
             for(int i = 0; i < routes.size(); i++){
                 PolylineOptions polyLineOptions = new PolylineOptions();
-                polyLineOptions.color(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
-                polyLineOptions.width(10);
+                int valor = new Random().nextInt(colorsAll.length);
+                polyLineOptions.color(Color.parseColor(colorsAll[valor]));
+                polyLineOptions.width(8);
                 polyLineOptions.addAll(routes.get(i).getPoints());
-
                 Polyline polyLine = mMap.addPolyline(polyLineOptions);
                 polyLines.add(polyLine);
-
-                int distance = routes.get(i).getDistanceValue();
-                int duration = routes.get(i).getDurationValue();
-
-                Toast.makeText(MapsActivity.this, " Distance: " +distance+  " and duration " + duration, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -148,28 +170,87 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     };
 
-    private void calculateRoute(LatLng myHome, LatLng myOffice) {
-        ArrayList<LatLng> points = new ArrayList<>();
-        points.add(myHome);
-        points.add(myOffice);
 
+    private void calculateRouteCinemas(ArrayList<LatLng> points) {
         Routing routing = new Routing.Builder()
                 .travelMode(AbstractRouting.TravelMode.DRIVING)
-                .alternativeRoutes(true)
                 .waypoints(points)
                 .key(getString(R.string.google_maps_key))
-                .optimize(false)
+                .optimize(true)
+                .alternativeRoutes(true)
                 .withListener(routingListener)
                 .build();
         routing.execute();
+        centerRoutes(points);
+    }
+
+
+    /**
+     * Función para centras todos los puntos marcados en el Mapa
+     * @param points
+     */
+    private void centerRoutes(ArrayList<LatLng> points){
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (int i = 0; i < points.size(); i++){
+            builder.include(points.get(i));
+        }
+        LatLngBounds bounds = builder.build();
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 18);
+        mMap.animateCamera(cameraUpdate);
+
+        changeStateControls();
     }
 
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorId) {
+
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorId);
         vectorDrawable.setBounds(0,0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         vectorDrawable.draw(canvas);
+
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
+
+    @Override
+    public void showCinemas(final ArrayList<Cinema> cinemaArrayList) {
+
+        this.cinemaArrayList = cinemaArrayList;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                createMarkers(cinemaArrayList);
+            }
+        });
+    }
+
+    @Override
+    public void showAlertDialog(int title, int message) {
+        showAlert(title, message);
+    }
+
+    /**
+     * Función para mostrar un Dialog en caso que ocurra un error en la App
+     * @param title
+     * @param message
+     */
+    public void showAlert(final int title, final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getShowAlertDialog().showAlertDialog(title, message, false, R.string.accept, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getPresenter().getCinemaPresenter();
+                    }
+                }, R.string.option_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+            }
+        });
+    }
+
 }

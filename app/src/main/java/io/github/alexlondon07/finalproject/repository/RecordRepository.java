@@ -1,8 +1,11 @@
 package io.github.alexlondon07.finalproject.repository;
 
+import java.util.ArrayList;
+
 import io.github.alexlondon07.finalproject.helper.ServicesFactory;
 import io.github.alexlondon07.finalproject.helper.TypeDecryption;
 import io.github.alexlondon07.finalproject.model.Records;
+import io.github.alexlondon07.finalproject.model.cinemas.Cinema;
 import io.github.alexlondon07.finalproject.service.IServices;
 
 /**
@@ -13,8 +16,9 @@ public class RecordRepository implements IRecordRepository {
 
     private IServices services;
 
-    public RecordRepository() {
-        ServicesFactory servicesFactory = new ServicesFactory(TypeDecryption.XML);
+
+    public RecordRepository(TypeDecryption typeDecryption) {
+        ServicesFactory servicesFactory = new ServicesFactory(typeDecryption);
         services = (IServices) servicesFactory.getInstance(IServices.class);
     }
 
@@ -23,4 +27,11 @@ public class RecordRepository implements IRecordRepository {
     public Records getRecords() throws RepositoryError {
         return services.getRecordsList();
     }
+
+    @Override
+    public ArrayList<Cinema> getCinemas() throws RepositoryError {
+        return services.getCinemas();
+    }
+
+
 }
