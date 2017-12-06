@@ -71,6 +71,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics-ndk:2.0.0@aar') {
         transitive = true;
     }
+
+    compile 'com.github.florent37:diagonallayout:1.0.2'
 }
 
 

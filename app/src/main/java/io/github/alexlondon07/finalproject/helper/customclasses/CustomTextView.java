@@ -22,12 +22,13 @@ public class CustomTextView extends AppCompatTextView  {
     public CustomTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         setAllCaps(true);
-        setTextAlignment(TEXT_ALIGNMENT_TEXT_START);
+        setTextAlignment(TEXT_ALIGNMENT_CENTER);
         setPadding(2,2,2,2);
         setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
         setTypeface(Typeface.DEFAULT_BOLD);
         setPadding(12,12,12,12);
         setTextSize(12);
+
     }
 
 }

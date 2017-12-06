@@ -31,4 +31,8 @@
     <string name="tweets">Tweets</string>
     <string name="siguiendo">Siguiendo</string>
     <string name="seguidores">Seguidores</string>
+    <string name="tweets_count">250</string>
+    <string name="siguiendo_count">237</string>
+    <string name="alexlondon07">alexlondon07</string>
+    <string name="alexander">Alexander Londoño</string>
 </resources>
