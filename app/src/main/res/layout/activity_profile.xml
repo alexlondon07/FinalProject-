@@ -36,23 +36,25 @@
                 android:id="@+id/session_name_user"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="13dp"
+                android:layout_alignBottom="@+id/session_nickname"
+                android:layout_marginBottom="24dp"
+                android:layout_toEndOf="@+id/session_photo"
                 android:paddingTop="5dp"
                 android:text="@string/alexander"
                 android:textAlignment="center" />
 
+            <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
+                android:id="@+id/session_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/session_photo"
+                android:paddingTop="5dp"
+                android:text="@string/alexlondon07"
+                android:textAlignment="center" />
+
         </RelativeLayout>
 
-
-        <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
-            android:id="@+id/session_nickname"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/alexlondon07"
-            android:textAlignment="center"
-            android:paddingTop="5dp"/>
 
     </LinearLayout>
 
@@ -70,13 +72,13 @@
             android:orientation="vertical">
 
             <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
-                android:id="@+id/session_likes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:text="@string/tweets"/>
 
             <TextView
+                android:id="@+id/session_likes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tweets_count"
@@ -91,13 +93,13 @@
             android:orientation="vertical">
 
             <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
-                android:id="@+id/session_following"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/siguiendo"
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/session_following"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/siguiendo_count"
@@ -113,21 +115,32 @@
             android:orientation="vertical">
 
             <io.github.alexlondon07.finalproject.helper.customclasses.CustomTextView
-                android:id="@+id/session_followers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/seguidores"
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/session_followers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/seguidores"
+                android:text="@string/tweets_count"
                 android:textAlignment="center" />
         </LinearLayout>
 
     </LinearLayout>
 
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:id="@+id/login_twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp" />
+
 
 </LinearLayout>
+
+
+
+
 
