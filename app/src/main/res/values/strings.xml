@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Trailer Apple</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_main">Main Activity</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Mapas</string>
+    <string name="title_activity_main">Actividad principal</string>
+    <string name="action_settings">Ajustes</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_billboard_detail">Record Detail</string>
+    <string name="title_activity_billboard_detail">Detalle Pelicula</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -35,8 +35,8 @@
     <string name="siguiendo_count">0</string>
     <string name="alexlondon07">alexlondon07</string>
     <string name="alexander">Alexander Londoño</string>
-
     <string name="com.twitter.sdk.android.CONSUMER_KEY">UbWeok7LChx5ZQVVlMSFpBeux</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">MgKrpBcPoD9MZFHC3XAYStSihQq18dKBRMcrD9FaRzx6mn6Dxl</string>
-
+    <string name="profile">Perfil Twitter</string>
+    <string name="nickname">Usuario</string>
 </resources>

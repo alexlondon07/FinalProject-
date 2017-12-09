@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "ProfileActivity";
     private TwitterLoginButton twitterLoginButton;
-    private ImageView profilePhoto;
+    private ImageView profilePhoto, profileBannerUrl;
     private TextView username, name, tweets, followers, followings;
 
     @Override
@@ -76,15 +76,11 @@ public class ProfileActivity extends AppCompatActivity {
                                 .centerCrop()
                                 .into(profilePhoto);
 
-
                         username.setText(result.data.screenName);
                         name.setText(result.data.name);
                         tweets.setText(""+result.data.statusesCount);
                         followers.setText(""+result.data.followersCount);
                         followings.setText(""+result.data.friendsCount);
-
-
-
                     }
 
                     @Override
