@@ -3,7 +3,11 @@ package io.github.alexlondon07.finalproject.view.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +32,10 @@ public class ProfileActivity extends AppCompatActivity {
     private TwitterLoginButton twitterLoginButton;
     private ImageView profilePhoto, profileBannerUrl;
     private TextView username, name, tweets, followers, followings;
+    private CardView cardViewProfile;
+    private ImageButton imageButtonChangePhotoTwitter;
+    private BottomSheetDialog bottomSheetDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Twitter.initialize(this);
         setContentView(R.layout.activity_profile);
-
 
         loadView();
         loginTwitter(this);
@@ -45,12 +52,22 @@ public class ProfileActivity extends AppCompatActivity {
         //Información del Usuario Logueado
         twitterLoginButton = findViewById(R.id.login_twitter);
         profilePhoto = findViewById(R.id.session_photo);
-
         username = findViewById(R.id.session_nickname);
         name = findViewById(R.id.session_name_user);
         tweets = findViewById(R.id.session_likes);
         followers = findViewById(R.id.session_followers);
         followings = findViewById(R.id.session_following);
+        cardViewProfile = findViewById(R.id.cardview_profile);
+
+        imageButtonChangePhotoTwitter = findViewById(R.id.imageButton_change_photo);
+        imageButtonChangePhotoTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.show();
+            }
+        });
+
+        showCustomDialog();
     }
 
     private void loginTwitter(final Context context) {
@@ -81,6 +98,8 @@ public class ProfileActivity extends AppCompatActivity {
                         tweets.setText(""+result.data.statusesCount);
                         followers.setText(""+result.data.followersCount);
                         followings.setText(""+result.data.friendsCount);
+
+                        hideButtonLoginTwitter();
                     }
 
                     @Override
@@ -101,5 +120,25 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         twitterLoginButton.onActivityResult(requestCode,resultCode,data);
+    }
+
+    public void showButtonLoginTwitter(View button)
+    {
+        if (twitterLoginButton.getVisibility() == View.GONE){
+            twitterLoginButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideButtonLoginTwitter(){
+        if (twitterLoginButton.getVisibility() == View.VISIBLE){
+            twitterLoginButton.setVisibility(View.GONE);
+        }
+    }
+
+    private void showCustomDialog() {
+        View view = getLayoutInflater().inflate(R.layout.bottomsheet, null);
+        bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.setCancelable(true);
     }
 }

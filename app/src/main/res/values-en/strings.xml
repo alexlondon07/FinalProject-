@@ -39,5 +39,6 @@
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">MgKrpBcPoD9MZFHC3XAYStSihQq18dKBRMcrD9FaRzx6mn6Dxl</string>
     <string name="profile">Twitter profile</string>
     <string name="nickname">Username</string>
+    <string name="your_photo">Your photo here</string>
 
 </resources>
