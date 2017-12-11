@@ -40,4 +40,5 @@
     <string name="profile">Perfil Twitter</string>
     <string name="nickname">Usuario</string>
     <string name="your_photo">Tu foto Aquí</string>
+    <string name="route_app">io.github.alexlondon07.finalproject</string>
 </resources>

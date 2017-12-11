@@ -54,6 +54,17 @@
         <activity android:name=".view.activities.SplashActivity"></activity>
         <activity android:name=".view.activities.TourActivity" />
 
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="io.github.alexlondon07.finalproject"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="3322ede2dcd59ccc447474fd2b3845d90232d1df" />
